@@ -2,7 +2,7 @@
 
 ## dockerhub link
 
-[Dockerhub](https://hub.docker.com/repository/docker/marcusbalbi/php-fpm-laravel)
+[Dockerhub](https://hub.docker.com/r/marcusbalbi/php-fpm-laravel)
 
 ## Repositório com Exercícios desenvolvidos junto com as aulas 
 
