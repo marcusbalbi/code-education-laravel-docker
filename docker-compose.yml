@@ -4,6 +4,12 @@ services:
   app:
     build: .
     container_name: app_laravel_code_education
+    entrypoint: dockerize -template ./.docker/app/.env:.env  -wait tcp://db:3306 -timeout 120s ./.docker/app/entrypoint.sh
+    environment: 
+      - DB_HOST=db
+      - DB_DATABASE=laravel
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
     volumes:
       - ./:/var/www
     networks:
@@ -12,7 +18,11 @@ services:
       - db
       - redis
   nginx:
-    build: .docker/nginx
+    build:
+      context: .docker/nginx
+      args:
+      - HOST=app
+      - PORT=9000
     container_name: nginx_code_education
     restart: always
     tty: true
