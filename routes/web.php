@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+// segunda rota
+Route::get('/', function () {
+    return view('welcome');
+});
