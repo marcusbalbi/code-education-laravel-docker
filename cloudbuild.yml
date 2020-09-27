@@ -6,7 +6,7 @@ steps:
 
 - id: "Chown in /var/www"
   name: 'docker'
-  args: ['exec','-u','root','-t','app','chown','-R','www-data:www-data','/var/www']
+  args: ['exec','-u','root','-t','app_laravel_code_education','chown','-R','www-data:www-data','/var/www']
 
 - id: "Rodando docker ps"
   name: 'docker'
