@@ -47,6 +47,7 @@ services:
     environment: 
       - MYSQL_DATABASE=laravel
       - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_PASSWORD=root
       - MYSQL_USER=root
     networks:
       - code_education_app_networks
