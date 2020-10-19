@@ -32,19 +32,19 @@ steps:
   name: 'docker'
   args: ['exec', '-t', 'app_laravel_code_education', 'php', '/var/www/vendor/bin/phpunit', '-c', '/var/www/phpunit.xml']
 
-- id: "Building image from Dockerfile.prod"
-  name: 'docker'
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/app_laravel_code_education:$SHORT_SHA', '-f', 'Dockerfile.prod', '.']
+# - id: "Building image from Dockerfile.prod"
+#   name: 'docker'
+#   args: ['build', '-t', 'gcr.io/$PROJECT_ID/app_laravel_code_education:$SHORT_SHA', '-f', 'Dockerfile.prod', '.']
 
-- id: "Pushing Image"
-  name: 'docker'
-  args: ['push', 'gcr.io/$PROJECT_ID/app_laravel_code_education:$SHORT_SHA']
+# - id: "Pushing Image"
+#   name: 'docker'
+#   args: ['push', 'gcr.io/$PROJECT_ID/app_laravel_code_education:$SHORT_SHA']
 
-- id: "adjusting deployment files on k8s"
-  name: 'gcr.io/cloud-builders/gcloud'
-  entrypoint: '/bin/sh'
-  args:
-    - '-c'
-    - |
-      sed 's#img-app-deployment#gcr.io/$PROJECT_ID/app_laravel_code_education:$SHORT_SHA#g' k8s/app/deployment.yml > k8s/app/deployment-new.yml
-      cat k8s/app/deployment-new.yml
+# - id: "adjusting deployment files on k8s"
+#   name: 'gcr.io/cloud-builders/gcloud'
+#   entrypoint: '/bin/sh'
+#   args:
+#     - '-c'
+#     - |
+#       sed 's#img-app-deployment#gcr.io/$PROJECT_ID/app_laravel_code_education:$SHORT_SHA#g' k8s/app/deployment.yml > k8s/app/deployment-new.yml
+#       cat k8s/app/deployment-new.yml
