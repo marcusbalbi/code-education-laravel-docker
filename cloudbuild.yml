@@ -8,10 +8,6 @@ steps:
   name: 'docker'
   args: ['exec','-u','root','-t','app_laravel_code_education','chown','-R','www-data:www-data','/var/www']
 
-- id: "Rodando docker ps"
-  name: 'docker'
-  args: ['ps']
-
 - id: "Rodando composer"
   name: 'docker'
   args: ['exec', '-t', 'app_laravel_code_education' ,'composer', 'install']
