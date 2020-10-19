@@ -14,13 +14,13 @@ WORKDIR /var/www
 RUN rm -rf /var/www/html
 RUN ln -s public html
 COPY . /var/www
+RUN chmod -R 775 storage
 RUN chown -R www-data:www-data /var/www
 RUN usermod -u 1000 www-data
 USER www-data
 
 RUN composer install \
-  && php artisan config:cache \
-  && chmod -R 775 storage
+  && php artisan config:cache
 
 RUN npm install
 
