@@ -3,7 +3,6 @@ version: "3.7"
 services:
   app:
     build: .
-    dockerfile: Dockerfile
     container_name: app_laravel_code_education
     volumes:
       - ./:/var/www
