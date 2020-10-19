@@ -44,3 +44,13 @@ steps:
     - |
       sed 's#img-app-deployment#gcr.io/$PROJECT_ID/app_laravel_code_education:$SHORT_SHA#g' k8s/app/deployment.yml > k8s/app/deployment-new.yml
       cat k8s/app/deployment-new.yml
+
+- id: "Deploying k8s"
+  name: 'gcr.io/cloud-builders/kubectl'
+  args:
+    - 'apply'
+    - '-f'
+    - 'k8s/app/deployment-new.yml'
+  env:
+    - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-docker-laravel'
