@@ -8,10 +8,6 @@ steps:
   name: 'docker'
   args: ['exec','-u','root','-t','app_laravel_code_education','chown','-R','www-data:www-data','/var/www']
 
-- id: "Rodando docker ps"
-  name: 'docker'
-  args: ['ps']
-
 - id: "Rodando composer"
   name: 'docker'
   args: ['exec', '-t', 'app_laravel_code_education' ,'composer', 'install']
@@ -31,11 +27,3 @@ steps:
 - id: "rodando phpunit"
   name: 'docker'
   args: ['exec', '-t', 'app_laravel_code_education', 'php', '/var/www/vendor/bin/phpunit', '-c', '/var/www/phpunit.xml']
-
-- id: "Building image from Dockerfile.prod"
-  name: 'docker'
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/app_laravel_code_education:$SHORT_SHA', '-f', 'Dockerfile.prod', '.']
-
-- id: "Pushing Image"
-  name: 'docker'
-  args: ['push', 'gcr.io/$PROJECT_ID/app_laravel_code_education:$SHORT_SHA']
