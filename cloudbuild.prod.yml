@@ -41,7 +41,7 @@ steps:
   args: ['push', 'gcr.io/$PROJECT_ID/app_laravel_code_education:$SHORT_SHA']
 
 - id: "adjusting deployment files on k8s"
-  name: 'gcloud'
+  name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: '/bin/sh'
   args:
     - '-c'
